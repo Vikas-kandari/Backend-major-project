@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pizza Store Items</title>
+</head>
+
+<body>
+    <h1>Pizza Store Items</h1>
+    <ul>
+        <% items.forEach(item => { %>
+        <li>
+            <%= item.name %> - $<%= item.price %>
+            <a href="/items/<%= item._id %>/edit">Edit</a>
+            <form action="/items/<%= item._id %>?_method=DELETE" method="post" style="display:inline">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        <% }) %>
+    </ul>
+    <h2>Add a New Item</h2>
+    <form action="/items" method="post">
+        <input type="text" name="name" placeholder="Item Name" required>
+        <input type="number" name="price" placeholder="Price" required>
+        <textarea name="description" placeholder="Description" required></textarea>
+        <button type="submit">Add Item</button>
+    </form>
+</body>
+
+</html>
+
